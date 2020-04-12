@@ -37,7 +37,7 @@ public class screen6 extends AppCompatActivity {
         tittlename = intent.getStringExtra("name");
         activecases = intent.getStringExtra("cases");
 
-        title.setText(tittlename + " 's  " +"Statistics");
+        title.setText(tittlename + "'s  " +"Statistics");
         cases.setText(activecases);
 
         firebaseStorage = FirebaseStorage.getInstance();
