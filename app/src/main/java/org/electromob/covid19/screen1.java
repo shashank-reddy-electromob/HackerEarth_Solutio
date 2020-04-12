@@ -47,6 +47,8 @@ public class screen1 extends AppCompatActivity {
     private EditText editTextCode,name,phone;
     private FirebaseAuth mAuth,auth;
     private FirebaseUser user;
+    private double lat ;
+    private double longi ;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference reff;
     private Button submit,verify;
@@ -66,21 +68,23 @@ public class screen1 extends AppCompatActivity {
         submit = findViewById(R.id.button);
         verify = findViewById(R.id.button2);
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
         ActivityCompat.requestPermissions( this,
                 new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
 
-        btnGetLocation = findViewById(R.id.button);
-        btnGetLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                    OnGPS();
-                } else {
-                    getLocation();
-                }
-            }
-        });
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            OnGPS();
+        } else {
+            getLocation();
+        }
+
+        if (currentUser != null)
+        {
+            finish();
+            startActivity(new Intent(getApplicationContext(),screen2_1.class));
+        }
 
         auth = FirebaseAuth.getInstance();
 
@@ -112,6 +116,7 @@ public class screen1 extends AppCompatActivity {
                 submit.setVisibility(View.INVISIBLE);
                 editTextCode.setVisibility(View.VISIBLE);
                 verify.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
 
                 sendVerificationCode(phone1);
 
@@ -170,6 +175,10 @@ public class screen1 extends AppCompatActivity {
 
                             Intent intent = new Intent(getApplicationContext(), screen2.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("number",phone1);
+                            intent.putExtra("name",name1);
+                            intent.putExtra("lattitude",latitude);
+                            intent.putExtra("longitude",longitude);
                             startActivity(intent);
 
                         } else {
@@ -217,11 +226,11 @@ public class screen1 extends AppCompatActivity {
         } else {
             Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (locationGPS != null) {
-                double lat = locationGPS.getLatitude();
-                double longi = locationGPS.getLongitude();
+                lat = locationGPS.getLatitude();
+                longi = locationGPS.getLongitude();
                 latitude = String.valueOf(lat);
                 longitude = String.valueOf(longi);
-                Toast.makeText(getApplicationContext(),"Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"Your Location: " + "\n" + "Latitude: " + latitude + "\n" + "Longitude: " + longitude,Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
             }

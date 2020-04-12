@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginTop="30dp"
-                android:text="Quationaire"
+                android:text="Basic Health Assessment"
                 android:layout_gravity="center"
                 android:textColor="#000"
                 android:textSize="24sp"
@@ -183,6 +183,107 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                android:layout_margin="8dp"
+                cardview:cardElevation="5dp"
+                cardview:cardCornerRadius="12dp"
+                cardview:contentPadding="4dp"
+                android:foreground="?selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Height ?"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.075"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <EditText
+                        android:id="@+id/edheight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:hint="In Cm's"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"
+                        app:layout_constraintVertical_bias="0.097"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                android:layout_margin="8dp"
+                cardview:cardElevation="5dp"
+                cardview:cardCornerRadius="12dp"
+                cardview:contentPadding="4dp"
+                android:foreground="?selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Weight ?"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.075"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                    <EditText
+                        android:id="@+id/edweight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:hint="In Kg's"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView"
+                        app:layout_constraintVertical_bias="0.097"
+                        tools:layout_editor_absoluteX="16dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.cardview.widget.CardView
 
